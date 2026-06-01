@@ -2,6 +2,7 @@ package com.projeto.book.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
@@ -32,6 +33,6 @@ public class Livro {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    @JsonManagedReference
+    @JsonBackReference
     private Cliente cliente;
 }

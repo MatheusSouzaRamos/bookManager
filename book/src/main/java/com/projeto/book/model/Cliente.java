@@ -3,6 +3,7 @@ package com.projeto.book.model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +32,6 @@ public class Cliente {
     private String telefone;
 
     @OneToMany(mappedBy = "cliente")
-    @JsonBackReference
+    @JsonManagedReference
     private List<Livro> livros;
 }
