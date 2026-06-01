@@ -45,7 +45,6 @@ public class LivroService {
         entity.setCliente(dto.getCliente());
         entity.setDataLancamento(dto.getDataLancamento());
         entity.setNome(dto.getNome());
-        entity.setEmprestado(false);
         entity = repository.save(entity);
         return new LivroDTO(entity);
     }
@@ -57,7 +56,6 @@ public class LivroService {
         entity.setCliente(dto.getCliente());
         entity.setDataLancamento(dto.getDataLancamento());
         entity.setNome(dto.getNome());
-        entity.setEmprestado(dto.isEmprestado());
         entity = repository.save(entity);
         return new LivroDTO(entity);
     }

@@ -27,7 +27,6 @@ public class Livro {
     private String nome;
     private String autor;
     private LocalDate dataLancamento;
-    private boolean emprestado;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")

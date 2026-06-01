@@ -20,7 +20,6 @@ public class LivroDTO {
     private String autor;
     private LocalDate dataLancamento;
     private Cliente cliente;
-    private boolean emprestado;
 
     public LivroDTO(Livro livro){
         this.id = livro.getId();
@@ -28,6 +27,5 @@ public class LivroDTO {
         this.autor = livro.getAutor();
         this.dataLancamento = livro.getDataLancamento();
         this.cliente = livro.getCliente();
-        this.emprestado = livro.isEmprestado();
     }
 }

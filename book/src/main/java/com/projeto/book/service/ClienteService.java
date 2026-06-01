@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.projeto.book.dto.ClienteDTO;
@@ -13,6 +14,7 @@ import com.projeto.book.repository.ClienteRepository;
 import com.projeto.book.service.exception.DatabaseException;
 import com.projeto.book.service.exception.EntityNotFoundException;
 
+@Service
 public class ClienteService {
     @Autowired
     private ClienteRepository repository;
