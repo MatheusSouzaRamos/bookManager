@@ -2,6 +2,7 @@ package com.projeto.book.dto;
 
 import java.time.LocalDate;
 
+import com.projeto.book.model.Cliente;
 import com.projeto.book.model.Livro;
 
 import lombok.AllArgsConstructor;
@@ -18,11 +19,13 @@ public class LivroDTO {
     private String nome;
     private String autor;
     private LocalDate dataLancamento;
+    private Cliente cliente;
 
     public LivroDTO(Livro livro){
         this.id = livro.getId();
         this.nome = livro.getNome();
         this.autor = livro.getAutor();
         this.dataLancamento = livro.getDataLancamento();
+        this.cliente = livro.getCliente();
     }
 }

@@ -1,6 +1,9 @@
 package com.projeto.book.dto;
 
+import java.util.List;
+
 import com.projeto.book.model.Cliente;
+import com.projeto.book.model.Livro;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +20,7 @@ public class ClienteDTO {
     private String cpf;
     private String endereco;
     private String telefone;
+    private List<Livro> livros;
 
     public ClienteDTO(Cliente cliente) {
         this.id = cliente.getId();
@@ -24,5 +28,6 @@ public class ClienteDTO {
         this.cpf = cliente.getCpf();
         this.endereco = cliente.getEndereco();
         this.telefone = cliente.getTelefone();
+        this.livros = cliente.getLivros();
     }
 }
