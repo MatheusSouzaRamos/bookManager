@@ -2,6 +2,8 @@ package com.projeto.book.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,5 +32,6 @@ public class Livro {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
+    @JsonManagedReference
     private Cliente cliente;
 }

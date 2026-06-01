@@ -2,6 +2,8 @@ package com.projeto.book.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,5 +31,6 @@ public class Cliente {
     private String telefone;
 
     @OneToMany(mappedBy = "cliente")
+    @JsonBackReference
     private List<Livro> livros;
 }
