@@ -69,4 +69,14 @@ public class ClienteService {
         }
     }
 
+    @Transactional
+    public List<ClienteDTO> findByNome(String nome){
+        List<Cliente> list = repository.findByNomeContainingIgnoreCase(nome);
+        List<ClienteDTO> dto = new ArrayList<>();
+        for(Cliente c : list){
+            dto.add(new ClienteDTO(c));
+        }
+        return dto;
+    }
+
 }

@@ -56,4 +56,10 @@ public class ClienteController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping(value = "/buscar/{nome}")
+    public ResponseEntity<List<ClienteDTO>> findByNome(@PathVariable String nome){
+        List<ClienteDTO> dto = service.findByNome(nome);
+        return ResponseEntity.ok().body(dto);
+    }
 }

@@ -50,7 +50,8 @@ function buscarClienteId(){
     let idBuscar = document.getElementById("idBuscarCliente").value;
 
     if(!idBuscar){
-        alert("Insira um ID válido!");
+        listarTodosClientes();
+        // alert("Insira um ID válido!");
         return;
     }
 
@@ -92,6 +93,60 @@ function buscarClienteId(){
         console.log("Erro: ", erro);
     })
 }
+
+function buscarClienteNome(){
+    let nomeBuscar = document.getElementById("nomeBuscarCliente").value;
+    if(!nomeBuscar || nomeBuscar.trim() === ""){
+        listarTodosClientes();
+        return;
+    }
+    fetch(`http://localhost:8080/clientes/buscar/${nomeBuscar}`, {
+        method: "GET",
+        headers: {
+            "Accept": "application/json",
+            "Content-type": "application/json"
+        }
+    })
+    .then(res => {
+        if(!res.ok) throw new Error("Erro ao consultar clientes.");
+        return res.json();
+    })
+    .then(data => {
+        // console.log("Clientes: ", data);
+        let dados = document.getElementById("tabelaClientes");
+        let linhas = ""
+
+        for(let dado of data){
+            linhas += `
+                <tr>
+                    <td>${dado.id}</td>
+                    <td>${dado.nome}</td>
+                    <td>${dado.telefone}</td>
+                    <td>${dado.endereco}</td>
+                    <td>${dado.cpf}</td>
+                </tr>
+            
+            `
+        }
+
+        dados.innerHTML = `
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Endereço</th>
+                    <th>CPF</th>
+                </tr>
+                ${linhas}
+            </table>
+        `
+    })
+    .catch(erro => {
+        console.log("Erro: ", erro);
+    })
+}
+
 
 function inserirCliente(){
     let nomeInserir = document.getElementById("nomeInserirCliente").value;
