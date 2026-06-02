@@ -44,12 +44,14 @@
             </div>
         </div>
 
-        <input type="number" min="1" placeholder="Buscar" id="idBuscarCliente">
-        <button onclick="buscarClienteId()">Buscar Por ID</button>
-        <input type="text" placeholder="Nome" id="nomeBuscarCliente">
-        <button onclick="buscarClienteNome()">Buscar Por Nome</button>
+        <h3 class="tituloCadastrados">Clientes Cadastrados</h3>
 
-        <p>BUSCAR POR NOME</p>
+        <div class="filtroBusca">
+            <input type="number" min="1" placeholder="ID" id="idBuscarCliente" class="idBuscar">
+            <button onclick="buscarClienteId()" class="buttonBuscar">Buscar Por ID</button>
+            <input type="text" placeholder="Nome" id="nomeBuscarCliente" class="nomeBuscar">
+            <button onclick="buscarClienteNome()" class="buttonBuscar">Buscar Por Nome</button>
+        </div>
         
         <div id="tabelaClientes"></div>
     </main>
