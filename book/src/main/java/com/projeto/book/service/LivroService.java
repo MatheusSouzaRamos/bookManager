@@ -68,4 +68,15 @@ public class LivroService {
             throw new DatabaseException("Integridade Violada");
         }
     }
+
+    @Transactional
+    public List<LivroDTO> findByNome(String nome){
+        List<Livro> list = repository.findByNomeContainingIgnoreCase(nome);
+        List<LivroDTO> dto = new ArrayList<>();
+        for(Livro l : list){
+            dto.add(new LivroDTO(l));
+        }
+
+        return dto;
+    }
 }

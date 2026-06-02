@@ -56,4 +56,10 @@ public class LivroController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping(value = "/buscar/{nome}")
+    public ResponseEntity<List<LivroDTO>> findByNome(@PathVariable String nome){
+        List<LivroDTO> dto = service.findByNome(nome);
+        return ResponseEntity.ok().body(dto);
+    }
 }

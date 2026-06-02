@@ -11,7 +11,88 @@ function listarTodosLivros(){
         return res.json();
     })
     .then(data => {
-        console.log("Livros: ", data);
+        // console.log("Livros: ", data);
+        let dados = document.getElementById("tabelaLivros");
+        let linhas = ""
+
+        for(let dado of data){
+            linhas += `
+                <tr>
+                    <td>${dado.id}</td>
+                    <td>${dado.nome}</td>
+                    <td>${dado.autor}</td>
+                    <td>${dado.dataLancamento}</td>
+                    <td>${dado.cliente != null ? "Sim" : "Não"}</td>
+                </tr>
+            `
+        }
+
+        dados.innerHTML = `
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Autor</th>
+                    <th>Data de Lançamento</th>
+                    <th>Disponível</th>
+                </tr>
+                ${linhas}
+            </table>
+        `
+    })
+    .catch(erro => {
+        console.log("Erro: ", erro);
+    })
+}
+
+function buscarLivroNome(){
+    nomeBuscar = document.getElementById("nomeBuscarLivro").value;
+
+    if(!nomeBuscar || nomeBuscar.trim() === ""){
+        listarTodosLivros();
+        return;
+    }
+
+    fetch(`http://localhost:8080/livros/buscar/${nomeBuscar}`, {
+        method: "GET",
+        headers: {
+            "Accept": "application/json",
+            "Content-type": "application/json"
+        }
+    })
+    .then(res => {
+        if(!res.ok) throw new Error("Erro ao consultar livros.");
+        return res.json();
+    })
+    .then(data => {
+        // console.log("Livros: ", data);
+        let dados = document.getElementById("tabelaLivros");
+        let linhas = ""
+
+        for(let dado of data){
+            linhas += `
+                <tr>
+                    <td>${dado.id}</td>
+                    <td>${dado.nome}</td>
+                    <td>${dado.autor}</td>
+                    <td>${dado.dataLancamento}</td>
+                    <td>${dado.cliente != null ? "Sim" : "Não"}</td>
+                </tr>
+            `
+        }
+
+        dados.innerHTML = `
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Autor</th>
+                    <th>Data de Lançamento</th>
+                    <th>Disponível</th>
+                </tr>
+                ${linhas}
+            </table>
+        `
     })
     .catch(erro => {
         console.log("Erro: ", erro);
@@ -22,7 +103,7 @@ function buscarLivroId(){
     let idBuscar = document.getElementById("idBuscarLivro").value;
 
     if(!idBuscar){
-        alert("Insira um ID válido!");
+        listarTodosLivros();
         return;
     }
 
@@ -38,7 +119,27 @@ function buscarLivroId(){
         return res.json();
     })
     .then(data => {
-        console.log("Livro: ", data);
+        // console.log("Livro: ", data);
+        let dados = document.getElementById("tabelaLivros");
+
+        dados.innerHTML = `
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Autor</th>
+                    <th>Data de Lançamento</th>
+                    <th>Disponível</th>
+                </tr>
+                <tr>
+                    <td>${data.id}</td>
+                    <td>${data.nome}</td>
+                    <td>${data.autor}</td>
+                    <td>${data.dataLancamento}</td>
+                    <td>${data.cliente != null ? "Sim" : "Não"}</td>
+                </tr>
+            </table>
+        `
     })
     .then(erro => {
         console.log("Erro: ", erro);
@@ -95,6 +196,36 @@ function editarLivro(){
     })
     .then(res => {
         if(!res.ok) throw new Error("Erro ao atualizar livro.")
+    })
+    .catch(erro => {
+        console.log("Erro: ", erro)
+    })
+}
+
+function cadastrarLivro(){
+    let nomeCadastro = document.getElementById("nomeCadastrarLivro").value;
+    let autorCadastro = document.getElementById("autorCadastrarLivro").value;
+    let dataCadastro = document.getElementById("dataCadastrarLivro").value;
+
+    if(!nomeCadastro || nomeCadastro.trim() === "" || !autorCadastro || autorCadastro.trim() === "" || !dataCadastro){
+        alert("Campos inválidos, confira os campos de edição.");
+        return;
+    }
+
+    fetch(`http://localhost:8080/livros/`, {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            nome: nomeCadastro,
+            autor: autorCadastro,
+            dataLancamento: dataCadastro
+        })
+    })
+    .then(res => {
+        if(!res.ok) throw new Error("Erro ao cadastrar livro.")
     })
     .catch(erro => {
         console.log("Erro: ", erro)

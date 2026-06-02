@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livros</title>
     <link rel="stylesheet" href="../css/geral.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body onload="listarTodosLivros()">
     <header>
         <h1>BiblioTech</h1>
     </header>
@@ -16,20 +17,42 @@
         <a href="livros.html">Livros</a>
     </nav>
     <main>
-        <button onclick="listarTodosLivros()">Listar Todos</button>
-        <br>
-        <input type="number" min="1" placeholder="idBuscarLivro" id="idBuscarLivro">
-        <button onclick="buscarLivroId()">Buscar Por ID</button>
-        <br>
-        <input type="number" min="1" placeholder="idDeletarLivro" id="idDeletarLivro">
-        <button onclick="deletarLivro()">Deletar por id</button>
-        <br>
-        <input type="number" placeholder="id" id="idEditarLivro">
-        <input type="text" placeholder="nome" id="nomeEditarLivro">
-        <input type="text" placeholder="autor" id="autorEditarLivro">
-        <input type="date" placeholder="data" id="dataEditarLivro">
-        <button onclick="editarLivro()">Editar livro</button>
-        <a href="clientes.html">Clientes</a>
+        
+
+        <div class="card-container">
+            <div class="card">
+                <h3>Cadastro</h3>
+                <input type="number" placeholder="id" id="idCadastrarLivro">
+                <input type="text" placeholder="nome" id="nomeCadastrarLivro">
+                <input type="text" placeholder="autor" id="autorCadastrarLivro">
+                <input type="date" placeholder="data" id="dataCadastrarLivro">
+                <button onclick="cadastrarLivro()">Cadastrar livro</button>
+            </div>
+            <div class="card">
+                <h3>Editar</h3>
+                <input type="number" placeholder="id" id="idEditarLivro">
+                <input type="text" placeholder="nome" id="nomeEditarLivro">
+                <input type="text" placeholder="autor" id="autorEditarLivro">
+                <input type="date" placeholder="data" id="dataEditarLivro">
+                <button onclick="editarLivro()">Editar livro</button>
+            </div>
+            <div class="card">
+                <h3>Deletar</h3>
+                <input type="number" min="1" placeholder="idDeletarLivro" id="idDeletarLivro">
+                <button onclick="deletarLivro()">Deletar por id</button>
+            </div>
+        </div>
+
+        <h3 class="tituloCadastrados">Livros Cadastrados</h3>
+
+        <div class="filtroBusca">
+            <input type="number" min="1" placeholder="ID" id="idBuscarLivro" class="idBuscar">
+            <button onclick="buscarLivroId()" class="buttonBuscar">Buscar Por ID</button>
+            <input type="text" placeholder="Nome" id="nomeBuscarLivro" class="nomeBuscar">
+            <button onclick="buscarLivroNome()" class="buttonBuscar">Buscar Por Nome</button>
+        </div>
+
+        <div id="tabelaLivros"></div>
     </main>
     <footer></footer>
     <script src="../js/livros.js"></script>
