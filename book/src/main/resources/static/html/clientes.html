@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Clientes</title>
 </head>
 <body>
-    
+    <header></header>
+    <nav></nav>
+    <main>
+        <button onclick="listarTodosClientes()">Listar Todos</button>
+        <br>
+        <input type="number" min="1" placeholder="Buscar" id="idBuscarCliente">
+        <button onclick="buscarClienteId()">Buscar Por ID</button>
+        <br>
+        <input type="number" min="1" placeholder="Deletar" id="idDeletarCliente">
+        <button onclick="deletarCliente()">Deletar por id</button>
+        <br>
+        <input type="number" placeholder="id" id="idEditarCliente">
+        <input type="text" placeholder="nome" id="nomeEditarCliente">
+        <input type="text" placeholder="endereco" id="enderecoEditarCliente">
+        <input type="text" placeholder="cpf" id="cpfEditarCliente">
+        <input type="text" placeholder="telefone" id="telefoneEditarCliente">
+        <button onclick="editarCliente()">Editar Cliente</button>
+    </main>
+    <footer></footer>
+    <script src="../js/clientes.js"></script>
 </body>
 </html>

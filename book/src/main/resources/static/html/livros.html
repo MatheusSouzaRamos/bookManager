@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-Br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Livros</title>
 </head>
 <body>
-    
+    <header></header>
+    <nav></nav>
+    <main>
+        <button onclick="listarTodosLivros()">Listar Todos</button>
+        <br>
+        <input type="number" min="1" placeholder="idBuscarLivro" id="idBuscarLivro">
+        <button onclick="buscarLivroId()">Buscar Por ID</button>
+        <br>
+        <input type="number" min="1" placeholder="idDeletarLivro" id="idDeletarLivro">
+        <button onclick="deletarLivro()">Deletar por id</button>
+        <br>
+        <input type="number" placeholder="id" id="idEditarLivro">
+        <input type="text" placeholder="nome" id="nomeEditarLivro">
+        <input type="text" placeholder="autor" id="autorEditarLivro">
+        <input type="date" placeholder="data" id="dataEditarLivro">
+        <button onclick="editarLivro()">Editar livro</button>
+        <a href="clientes.html">Clientes</a>
+    </main>
+    <footer></footer>
+    <script src="../js/livros.js"></script>
 </body>
 </html>

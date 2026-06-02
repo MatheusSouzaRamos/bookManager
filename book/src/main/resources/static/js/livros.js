@@ -19,7 +19,7 @@ function listarTodosLivros(){
 }
 
 function buscarLivroId(){
-    let idBuscar = document.getElementById("").value;
+    let idBuscar = document.getElementById("idBuscarLivro").value;
 
     if(!idBuscar){
         alert("Insira um ID válido!");
@@ -46,9 +46,14 @@ function buscarLivroId(){
 }
 
 function deletarLivro(){
-    idDeletar = document.getElementById("").value;
+    idDeletar = document.getElementById("idDeletarLivro").value;
 
-    fetch(`htpp://localhost:8080/livros/${idDeletar}`, {
+    if(!idDeletar){
+        alert("Insira um ID válido.");
+        return;
+    }
+
+    fetch(`http://localhost:8080/livros/${idDeletar}`, {
         method: "DELETE",
         headers: {
             "Accept": "application/json",
@@ -65,15 +70,18 @@ function deletarLivro(){
 }
 
 function editarLivro(){
-    let idEditar;
-    let nomeEditar;
-    let autorEditar;
-    let dataEditar;
-    // let clienteEditar;
+    let idEditar = document.getElementById("idEditarLivro").value;
+    let nomeEditar = document.getElementById("nomeEditarLivro").value;
+    let autorEditar = document.getElementById("autorEditarLivro").value;
+    let dataEditar = document.getElementById("dataEditarLivro").value;
 
-    // validarCAMPOS
 
-    fetch(`htpp://localhost:8080/livros/${idEditar}`, {
+    if(!idEditar || !nomeEditar || nomeEditar.trim() === "" || !autorEditar || autorEditar.trim() === "" || !dataEditar){
+        alert("Campos inválidos, confira os campos de edição.");
+        return;
+    }
+
+    fetch(`http://localhost:8080/livros/${idEditar}`, {
         method: "PUT",
         headers: {
             "Accept": "application/json",
