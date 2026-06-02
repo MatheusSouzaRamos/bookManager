@@ -1,0 +1,86 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+    --cor1: #483519;
+    --cor2: #C36F09;
+    /* --cor3:  */
+}
+
+body {
+    background-color: rgb(218, 218, 218);
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 10px;
+    margin: auto;
+    margin-top: 10px;
+    /* background-color: red; */
+    width: 1000px;
+}
+
+.card {
+    height: 200px;
+    width: 300px;
+    /* border: 1px solid black; */
+    margin: auto;
+    background-color: white;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.418);
+}
+
+.card h3 {
+    color: white;
+    text-align: center;
+    font-weight: normal;
+    padding: 5px;
+    background-color: var(--cor1);
+    border-radius: 5px 5px 0px 0px;
+}
+
+.card input {
+    margin: auto;
+    display: block;
+    margin-top: 4px;
+    padding: 3px;
+}
+
+button {
+    border-radius: 5px;
+    border: 1px solid #000000;
+    outline: none;
+    box-shadow: none;
+}
+
+.card button {
+    display: block;
+    margin: auto;
+    margin-top: 5px;
+    padding: 3px;
+}
+
+table {
+    width: 1000px;
+    margin: auto;
+    background-color: white;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.418);
+}
+
+table td {
+    padding: 5px;
+    text-align: center;
+}
+
+table th {
+    background-color: var(--cor1);
+    color: white;
+    font-weight: normal;
+    padding: 5px;
+}

@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes</title>
+    <link rel="stylesheet" href="../css/geral.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body onload="listarTodosClientes()">
     <header>
         <h1>BiblioTech</h1>
     </header>
@@ -14,22 +16,40 @@
         <a href="clientes.html">Clientes</a>
         <a href="livros.html">Livros</a>
     </nav>
-    <main>
-        <button onclick="listarTodosClientes()">Listar Todos</button>
-        <br>
+    <main>        
+        <!-- <button onclick="listarTodosClientes()">Listar Todos</button> -->
+        <div class="card-container">
+            <div class="card">
+                <h3>Cadastro</h3>
+                <input type="text" placeholder="nome" id="nomeInserirCliente">
+                <input type="text" placeholder="endereco" id="enderecoInserirCliente">
+                <input type="text" placeholder="cpf" id="cpfInserirCliente">
+                <input type="text" placeholder="telefone" id="telefoneInserirCliente">
+                <button onclick="inserirCliente()">Inserir Cliente</button>
+            </div>
+            
+            <div class="card">
+                <h3>Alterar</h3>
+                <input type="number" placeholder="id" id="idEditarCliente">
+                <input type="text" placeholder="nome" id="nomeEditarCliente">
+                <input type="text" placeholder="endereco" id="enderecoEditarCliente">
+                <input type="text" placeholder="cpf" id="cpfEditarCliente">
+                <input type="text" placeholder="telefone" id="telefoneEditarCliente">
+                <button onclick="editarCliente()">Editar Cliente</button>
+            </div>
+            <div class="card">
+                <h3>Deletar</h3>
+                <input type="number" min="1" placeholder="Deletar" id="idDeletarCliente">
+                <button onclick="deletarCliente()">Deletar por id</button>
+            </div>
+        </div>
+
         <input type="number" min="1" placeholder="Buscar" id="idBuscarCliente">
         <button onclick="buscarClienteId()">Buscar Por ID</button>
-        <br>
-        <input type="number" min="1" placeholder="Deletar" id="idDeletarCliente">
-        <button onclick="deletarCliente()">Deletar por id</button>
-        <br>
-        <input type="number" placeholder="id" id="idEditarCliente">
-        <input type="text" placeholder="nome" id="nomeEditarCliente">
-        <input type="text" placeholder="endereco" id="enderecoEditarCliente">
-        <input type="text" placeholder="cpf" id="cpfEditarCliente">
-        <input type="text" placeholder="telefone" id="telefoneEditarCliente">
-        <button onclick="editarCliente()">Editar Cliente</button>
-        <a href="index.html">index</a>
+
+        <p>BUSCAR POR NOME</p>
+        
+        <div id="tabelaClientes"></div>
     </main>
     <footer></footer>
     <script src="../js/clientes.js"></script>
