@@ -20,7 +20,7 @@ public class ClienteDTO {
     private String cpf;
     private String endereco;
     private String telefone;
-    private List<Livro> livros;
+    // private List<Livro> livros;
 
     public ClienteDTO(Cliente cliente) {
         this.id = cliente.getId();
@@ -28,6 +28,6 @@ public class ClienteDTO {
         this.cpf = cliente.getCpf();
         this.endereco = cliente.getEndereco();
         this.telefone = cliente.getTelefone();
-        this.livros = cliente.getLivros();
+        // this.livros = cliente.getLivros();
     }
 }

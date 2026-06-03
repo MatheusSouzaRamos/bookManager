@@ -51,10 +51,6 @@ body {
     /* min-height: 100vh */
 }
 
-main {
-    height: 100vh;
-}
-
 .card-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

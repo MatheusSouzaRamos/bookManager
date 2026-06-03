@@ -40,6 +40,7 @@ function listarTodosClientes(){
                 ${linhas}
             </table>
         `
+        listarTodosClientes();
     })
     .catch(erro => {
         console.log("Erro: ", erro);
@@ -147,7 +148,6 @@ function buscarClienteNome(){
     })
 }
 
-
 function inserirCliente(){
     let nomeInserir = document.getElementById("nomeInserirCliente").value;
     let enderecoInserir = document.getElementById("enderecoInserirCliente").value;
@@ -166,14 +166,15 @@ function inserirCliente(){
             "Content-type": "application/json"
         },
         body: JSON.stringify({
-            cpf: cpfEditar,
-            endereco: enderecoEditar,
-            nome: nomeEditar,
-            teledone: telefoneEditar,
+            cpf: cpfInserir,
+            endereco: enderecoInserir,
+            nome: nomeInserir,
+            telefone: telefoneInserir,
         })
     })
     .then(res => {
         if(!res.ok) throw new Error("Erro ao inserir cliente.")
+        listarTodosClientes();
     })
     .catch(erro => {
         console.log("Erro: ", erro)
@@ -197,6 +198,7 @@ function deletarCliente(){
     })
     .then(res => {
         if(!res.ok) throw new Error("Erro ao deletar cliente.");
+        listarTodosClientes();
         return;
     })
     .catch(erro => {
@@ -230,9 +232,16 @@ function editarCliente(){
         })
     })
     .then(res => {
-        if(!res.ok) throw new Error("Erro ao atualizar cliente.")
+        if(!res.ok) throw new Error("Erro ao atualizar cliente.");
+        listarTodosClientes();
     })
     .catch(erro => {
         console.log("Erro: ", erro)
     })
+}
+
+function atualizarTabela(){
+    setTimeout(() => {
+        listarTodosClientes();
+    }, 100);
 }

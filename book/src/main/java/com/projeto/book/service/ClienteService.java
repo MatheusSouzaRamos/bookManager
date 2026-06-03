@@ -41,7 +41,7 @@ public class ClienteService {
         Cliente entity = new Cliente();
         entity.setCpf(dto.getCpf());
         entity.setEndereco(dto.getEndereco());
-        entity.setLivros(dto.getLivros());
+        // entity.setLivros(dto.getLivros());
         entity.setNome(dto.getNome());
         entity.setTelefone(dto.getTelefone());
         entity = repository.save(entity);
@@ -53,7 +53,7 @@ public class ClienteService {
         Cliente entity = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Não encontrado."));
         entity.setCpf(dto.getCpf());
         entity.setEndereco(dto.getEndereco());
-        entity.setLivros(dto.getLivros());
+        // entity.setLivros(dto.getLivros());
         entity.setNome(dto.getNome());
         entity.setTelefone(dto.getTelefone());
         entity = repository.save(entity);
