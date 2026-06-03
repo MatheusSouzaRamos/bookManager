@@ -22,7 +22,7 @@ function listarTodosLivros(){
                     <td>${dado.nome}</td>
                     <td>${dado.autor}</td>
                     <td>${dado.dataLancamento}</td>
-                    <td>${dado.cliente != null ? "Sim" : "Não"}</td>
+                    <td>${dado.cliente != null ? "Não" : "Sim"}</td>
                 </tr>
             `
         }
@@ -76,7 +76,7 @@ function buscarLivroNome(){
                     <td>${dado.nome}</td>
                     <td>${dado.autor}</td>
                     <td>${dado.dataLancamento}</td>
-                    <td>${dado.cliente != null ? "Sim" : "Não"}</td>
+                    <td>${dado.cliente != null ? "Não" : "Sim"}</td>
                 </tr>
             `
         }
@@ -136,7 +136,7 @@ function buscarLivroId(){
                     <td>${data.nome}</td>
                     <td>${data.autor}</td>
                     <td>${data.dataLancamento}</td>
-                    <td>${data.cliente != null ? "Sim" : "Não"}</td>
+                    <td>${data.cliente != null ? "Não" : "Sim"}</td>
                 </tr>
             </table>
         `
@@ -176,7 +176,6 @@ function editarLivro(){
     let autorEditar = document.getElementById("autorEditarLivro").value;
     let dataEditar = document.getElementById("dataEditarLivro").value;
 
-
     if(!idEditar || !nomeEditar || nomeEditar.trim() === "" || !autorEditar || autorEditar.trim() === "" || !dataEditar){
         alert("Campos inválidos, confira os campos de edição.");
         return;
@@ -212,7 +211,7 @@ function cadastrarLivro(){
         return;
     }
 
-    fetch(`http://localhost:8080/livros/`, {
+    fetch(`http://localhost:8080/livros`, {
         method: "POST",
         headers: {
             "Accept": "application/json",
@@ -231,3 +230,10 @@ function cadastrarLivro(){
         console.log("Erro: ", erro)
     })
 }
+
+function atualizarTabela(){
+    setTimeout(() => {
+        listarTodosLivros();
+    }, 100);
+}
+

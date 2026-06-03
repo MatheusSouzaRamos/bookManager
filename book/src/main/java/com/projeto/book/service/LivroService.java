@@ -53,7 +53,7 @@ public class LivroService {
     public LivroDTO update(Long id, LivroDTO dto){
         Livro entity = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Não encontrado."));
         entity.setAutor(dto.getAutor());
-        entity.setCliente(dto.getCliente());
+        entity.setCliente(entity.getCliente());
         entity.setDataLancamento(dto.getDataLancamento());
         entity.setNome(dto.getNome());
         entity = repository.save(entity);
@@ -76,7 +76,6 @@ public class LivroService {
         for(Livro l : list){
             dto.add(new LivroDTO(l));
         }
-
         return dto;
     }
 }
