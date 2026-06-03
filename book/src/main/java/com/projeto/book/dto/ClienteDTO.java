@@ -1,9 +1,7 @@
 package com.projeto.book.dto;
 
-import java.util.List;
 
 import com.projeto.book.model.Cliente;
-import com.projeto.book.model.Livro;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

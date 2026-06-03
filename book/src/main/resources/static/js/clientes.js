@@ -174,7 +174,7 @@ function inserirCliente(){
     })
     .then(res => {
         if(!res.ok) throw new Error("Erro ao inserir cliente.")
-        listarTodosClientes();
+        atualizarTabela();
     })
     .catch(erro => {
         console.log("Erro: ", erro)
@@ -198,7 +198,7 @@ function deletarCliente(){
     })
     .then(res => {
         if(!res.ok) throw new Error("Erro ao deletar cliente.");
-        listarTodosClientes();
+        atualizarTabela();
         return;
     })
     .catch(erro => {
@@ -228,12 +228,12 @@ function editarCliente(){
             cpf: cpfEditar,
             endereco: enderecoEditar,
             nome: nomeEditar,
-            teledone: telefoneEditar,
+            telefone: telefoneEditar,
         })
     })
     .then(res => {
         if(!res.ok) throw new Error("Erro ao atualizar cliente.");
-        listarTodosClientes();
+        atualizarTabela();
     })
     .catch(erro => {
         console.log("Erro: ", erro)

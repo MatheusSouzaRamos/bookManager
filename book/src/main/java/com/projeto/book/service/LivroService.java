@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +24,7 @@ public class LivroService {
 
     @Transactional(readOnly = true)
     public List<LivroDTO> findAll(){
-        List<Livro> list = repository.findAll();
+        List<Livro> list = repository.findAll(Sort.by("id"));
         List<LivroDTO> dto = new ArrayList<>();
         for(Livro l : list){
             dto.add(new LivroDTO(l));
@@ -71,7 +72,7 @@ public class LivroService {
 
     @Transactional
     public List<LivroDTO> findByNome(String nome){
-        List<Livro> list = repository.findByNomeContainingIgnoreCase(nome);
+        List<Livro> list = repository.findByNomeContainingIgnoreCase(nome, Sort.by("id"));
         List<LivroDTO> dto = new ArrayList<>();
         for(Livro l : list){
             dto.add(new LivroDTO(l));
