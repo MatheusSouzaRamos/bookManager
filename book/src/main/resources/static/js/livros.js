@@ -163,6 +163,7 @@ function deletarLivro(){
     })
     .then(res => {
         if(!res.ok) throw new Error("Erro ao deletar livro.");
+        atualizarTabela();
         return;
     })
     .catch(erro => {
@@ -194,7 +195,8 @@ function editarLivro(){
         })
     })
     .then(res => {
-        if(!res.ok) throw new Error("Erro ao atualizar livro.")
+        if(!res.ok) throw new Error("Erro ao atualizar livro.");
+        atualizarTabela();
     })
     .catch(erro => {
         console.log("Erro: ", erro)
@@ -224,7 +226,8 @@ function cadastrarLivro(){
         })
     })
     .then(res => {
-        if(!res.ok) throw new Error("Erro ao cadastrar livro.")
+        if(!res.ok) throw new Error("Erro ao cadastrar livro.");
+        atualizarTabela();
     })
     .catch(erro => {
         console.log("Erro: ", erro)
