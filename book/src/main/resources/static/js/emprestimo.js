@@ -1,4 +1,8 @@
-function buscarLivrosDisponiveis(){
+async function buscarLivrosDisponiveis(){
+
+
+    const clientes = await selectClientesOption();
+
     fetch("http://localhost:8080/livros/disponivel", {
         method: "GET",
         headers: {
@@ -12,6 +16,40 @@ function buscarLivrosDisponiveis(){
     })
     .then(data => {
         console.log(data);
+        dados = document.getElementById("tabelaEmprestimoDisponivel");
+
+        let linhas = ``
+
+        for(const el of data){
+            linhas += `
+                <tr">
+                    <td>${el.id}</td>
+                    <td>${el.nome}</td>
+                    <td>${el.autor}</td>
+                    <td>${el.dataLancamento}</td>
+                    <td>
+                        <select>${clientes}</select>
+                    </td>
+                    <td>
+                        <button>Emprestar</button>
+                    </td>
+                </tr>
+            `
+        }
+
+        dados.innerHTML = `
+            <table>
+                <tr>
+                    <th>ID Livro</th>
+                    <th>Livro</th>
+                    <th>Autor</th>
+                    <th>Ano Pub.</th>
+                    <th>Cliente</th>
+                    <th>Emprestar</th>
+                </tr>
+                ${linhas}
+            </table>  
+        `
     })
     .catch(erro => {
         console.log("Erro: ", erro);
@@ -31,9 +69,96 @@ function buscarLivrosEmprestados(){
         return res.json();
     })
     .then(data => {
-        console.log(data);
+        // console.log(data);
+        dados = document.getElementById("tabelaLivrosEmprestados");
+
+        let linhas = ``
+
+        data.forEach(el => {
+            console.log("Livro:", el.nome);
+            console.log("Cliente:", el.cliente);
+        });
+
+        for(const el of data){
+            linhas += `
+                <tr>
+                    <td>${el.id}</td>
+                    <td>${el.nome}</td>
+                    <td>${el.autor}</td>
+                    <td>${el.dataLancamento}</td>
+                    <td>${el.cliente.id}</td>
+                    <td>${el.cliente.nome}</td>
+                    <td>${el.cliente.telefone}</td>
+                    <td><button onclick="devolverLivro(${el.id})">Devolver</button></td>
+                </tr>
+            `
+        }
+
+        dados.innerHTML = `
+            <table>
+                <tr>
+                    <th>ID Livro</th>
+                    <th>Livro</th>
+                    <th>Autor</th>
+                    <th>Ano Pub.</th>
+                    <th>ID Cliente</th>
+                    <th>Nome Cliente</th>
+                    <th>Contato</th>
+                    <th>Devolver</th>
+                </tr>
+                ${linhas}
+            </table>        
+        `
+        
     })
     .catch(erro => {
         console.log("Erro: ", erro);
     });
 }
+
+function devolverLivro(id){
+    fetch(`http://localhost:8080/livros/devolver/${id}`, {
+        method: "PUT",
+        headers: {
+            "Accept": "application/json",
+            "Content-type": "application/json"
+        }
+    })
+    .then(res => {
+        if(!res.ok) throw new Error("Erro ao atualizar livro.");
+        atualizarTabela();
+    })
+    .catch(erro => {
+        console.log("Erro: ", erro)
+    })
+}
+
+async function selectClientesOption(){
+    const res = await fetch("http://localhost:8080/clientes", {
+        method: "GET",
+        headers: {
+            "Accept": "application/json",
+            "Content-type": "application/json"
+        }
+    })
+
+    if(!res.ok) throw new Error("Erro ao buscar clientes disponiveis.");
+    
+    const data = await res.json();
+
+    let text = "";
+
+    for(const el of data){
+        text += `<option id = "cliente-${el.id}" value = "${el.id}">${el.id} - ${el.nome}</option>`
+    }
+
+    return text;
+}
+
+function atualizarTabela(){
+    setTimeout(() => {
+        buscarLivrosDisponiveis();
+        buscarLivrosEmprestados();
+    }, 100);
+}
+

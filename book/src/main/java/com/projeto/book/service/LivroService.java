@@ -99,4 +99,11 @@ public class LivroService {
         }
         return dto;
     }
+
+    @Transactional
+    public void devolver(Long id){
+        Livro livro = repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        livro.setCliente(null);
+        repository.save(livro);
+    }
 }

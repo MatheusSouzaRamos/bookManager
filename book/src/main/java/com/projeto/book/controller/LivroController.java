@@ -75,5 +75,11 @@ public class LivroController {
         List<LivroDTO> dto = service.findEmprestados();
         return ResponseEntity.ok().body(dto);
     }
+
+    @PutMapping(value = "/devolver/{id}")
+    public ResponseEntity<LivroDTO> devolverLivro(@PathVariable Long id){
+        service.devolver(id);
+        return ResponseEntity.noContent().build();
+    }
     
 }
