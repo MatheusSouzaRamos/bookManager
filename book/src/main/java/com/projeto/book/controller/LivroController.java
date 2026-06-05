@@ -81,5 +81,11 @@ public class LivroController {
         service.devolver(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping(value = "/emprestar/{id}/{id2}")
+    public ResponseEntity<LivroDTO> emprestarLivro(@PathVariable Long id, @PathVariable Long id2){
+        service.emprestar(id, id2);
+        return ResponseEntity.noContent().build();
+    }
     
 }

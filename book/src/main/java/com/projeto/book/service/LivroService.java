@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.projeto.book.dto.LivroDTO;
+import com.projeto.book.model.Cliente;
 import com.projeto.book.model.Livro;
+import com.projeto.book.repository.ClienteRepository;
 import com.projeto.book.repository.LivroRepository;
 import com.projeto.book.service.exception.DatabaseException;
 
@@ -21,6 +23,9 @@ import jakarta.persistence.EntityNotFoundException;
 public class LivroService {
     @Autowired
     private LivroRepository repository;
+
+    @Autowired
+    private ClienteRepository clienteRepository;
 
     @Transactional(readOnly = true)
     public List<LivroDTO> findAll(){
@@ -102,8 +107,16 @@ public class LivroService {
 
     @Transactional
     public void devolver(Long id){
-        Livro livro = repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        Livro livro = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Nao encontrado."));
         livro.setCliente(null);
+        repository.save(livro);
+    }
+
+    @Transactional
+    public void emprestar(Long livroId, Long clienteId){
+        Livro livro = repository.findById(livroId).orElseThrow(() -> new EntityNotFoundException("Livro nao encontrado."));
+        Cliente cliente = clienteRepository.findById(clienteId).orElseThrow(() -> new EntityNotFoundException("Cliente nao encontrado."));
+        livro.setCliente(cliente);
         repository.save(livro);
     }
 }

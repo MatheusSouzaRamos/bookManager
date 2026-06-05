@@ -1,6 +1,4 @@
 async function buscarLivrosDisponiveis(){
-
-
     const clientes = await selectClientesOption();
 
     fetch("http://localhost:8080/livros/disponivel", {
@@ -22,16 +20,16 @@ async function buscarLivrosDisponiveis(){
 
         for(const el of data){
             linhas += `
-                <tr">
+                <tr>
                     <td>${el.id}</td>
                     <td>${el.nome}</td>
                     <td>${el.autor}</td>
                     <td>${el.dataLancamento}</td>
                     <td>
-                        <select>${clientes}</select>
+                        <select id="cliente-livro-${el.id}">${clientes}</select>
                     </td>
                     <td>
-                        <button>Emprestar</button>
+                        <button onclick="emprestarLivro(${el.id})">Emprestar</button>
                     </td>
                 </tr>
             `
@@ -153,6 +151,28 @@ async function selectClientesOption(){
     }
 
     return text;
+}
+
+function emprestarLivro(id){
+    const clienteId = document.getElementById(`cliente-livro-${id}`).value;
+
+    console.log("id livro", id);
+    console.log("Cliente id", clienteId);
+
+    fetch(`http://localhost:8080/livros/emprestar/${id}/${clienteId}`, {
+        method: "PUT",
+        headers: {
+            "Accept": "application/json",
+            "Content-type": "application/json"
+        }
+    })
+    .then(res => {
+        if(!res.ok) throw new Error("Erro ao emprestar livro.");
+        atualizarTabela();
+    })
+    .catch(erro => {
+        console.log("Erro: ", erro);
+    })
 }
 
 function atualizarTabela(){
