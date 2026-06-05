@@ -79,4 +79,24 @@ public class LivroService {
         }
         return dto;
     }
+
+    @Transactional
+    public List<LivroDTO> findDisponiveis(){
+        List<Livro> list = repository.findLivrosDisponiveis(Sort.by("id"));
+        List<LivroDTO> dto = new ArrayList<>();
+        for(Livro l : list){
+            dto.add(new LivroDTO(l));
+        }
+        return dto;
+    }
+
+    @Transactional
+    public List<LivroDTO> findEmprestados(){
+        List<Livro> list = repository.findLivrosEmprestados(Sort.by("id"));
+        List<LivroDTO> dto = new ArrayList<>();
+        for(Livro l : list){
+            dto.add(new LivroDTO(l));
+        }
+        return dto;
+    }
 }

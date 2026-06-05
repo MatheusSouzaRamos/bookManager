@@ -40,7 +40,6 @@ function listarTodosClientes(){
                 ${linhas}
             </table>
         `
-        listarTodosClientes();
     })
     .catch(erro => {
         console.log("Erro: ", erro);
@@ -49,6 +48,8 @@ function listarTodosClientes(){
 
 function buscarClienteId(){
     let idBuscar = document.getElementById("idBuscarCliente").value;
+    // console.log(idBuscar)
+    console.log("Função chamada");
 
     if(!idBuscar){
         listarTodosClientes();
@@ -89,6 +90,8 @@ function buscarClienteId(){
                 </tr>
             </table>
         `
+
+        console.log(dados);
     })
     .catch(erro => {
         console.log("Erro: ", erro);

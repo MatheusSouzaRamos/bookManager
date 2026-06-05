@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.projeto.book.dto.LivroDTO;
 import com.projeto.book.service.LivroService;
 
+
 @RestController
 @RequestMapping(value = "/livros")
 @CrossOrigin("*")
@@ -62,4 +63,17 @@ public class LivroController {
         List<LivroDTO> dto = service.findByNome(nome);
         return ResponseEntity.ok().body(dto);
     }
+
+    @GetMapping(value = "/disponivel")
+    public ResponseEntity<List<LivroDTO>> findDisponiveis(){
+        List<LivroDTO> dto = service.findDisponiveis();
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @GetMapping(value = "/emprestado")
+    public ResponseEntity<List<LivroDTO>> findEmprestados(){
+        List<LivroDTO> dto = service.findEmprestados();
+        return ResponseEntity.ok().body(dto);
+    }
+    
 }
