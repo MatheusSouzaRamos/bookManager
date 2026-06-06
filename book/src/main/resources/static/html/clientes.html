@@ -20,26 +20,30 @@
         <div class="card-container">
             <div class="card">
                 <h3>Cadastro</h3>
+                <br>
                 <input type="text" placeholder="Nome" id="nomeInserirCliente">
                 <input type="text" placeholder="Endereço" id="enderecoInserirCliente">
                 <input type="text" placeholder="CPF" id="cpfInserirCliente">
                 <input type="text" placeholder="Telefone" id="telefoneInserirCliente">
-                <button onclick="inserirCliente(); ">Inserir Cliente</button>
+                <button onclick="inserirCliente(); ">Cadastrar Cliente</button>
             </div>
             
             <div class="card">
                 <h3>Alterar</h3>
                 <input type="number" placeholder="id" id="idEditarCliente">
-                <input type="text" placeholder="nome" id="nomeEditarCliente">
-                <input type="text" placeholder="endereco" id="enderecoEditarCliente">
-                <input type="text" placeholder="cpf" id="cpfEditarCliente">
-                <input type="text" placeholder="telefone" id="telefoneEditarCliente">
+                <input type="text" placeholder="Nome" id="nomeEditarCliente">
+                <input type="text" placeholder="Endereco" id="enderecoEditarCliente">
+                <input type="text" placeholder="CPF" id="cpfEditarCliente">
+                <input type="text" placeholder="Telefone" id="telefoneEditarCliente">
                 <button onclick="editarCliente();">Editar Cliente</button>
             </div>
             <div class="card">
                 <h3>Deletar</h3>
-                <input type="number" min="1" placeholder="Deletar" id="idDeletarCliente">
-                <button onclick="deletarCliente();">Deletar por id</button>
+                <br>
+                <br>
+                <br>
+                <input type="number" min="1" placeholder="ID" id="idDeletarCliente">
+                <button onclick="deletarCliente();">Deletar</button>
             </div>
         </div>
 
@@ -47,9 +51,9 @@
 
         <div class="filtroBusca">
             <input type="number" min="1" placeholder="ID" id="idBuscarCliente" class="idBuscar">
-            <button onclick="buscarClienteId()" class="buttonBuscar">Buscar Por ID</button>
+            <button onclick="buscarClienteId()" class="buttonBuscar">Buscar por ID</button>
             <input type="text" placeholder="Nome" id="nomeBuscarCliente" class="nomeBuscar">
-            <button onclick="buscarClienteNome()" class="buttonBuscar">Buscar Por Nome</button>
+            <button onclick="buscarClienteNome()" class="buttonBuscar">Buscar por Nome</button>
         </div>
         
         <div id="tabelaClientes"></div>

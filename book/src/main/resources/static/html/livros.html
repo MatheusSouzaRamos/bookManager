@@ -21,23 +21,29 @@
         <div class="card-container">
             <div class="card">
                 <h3>Cadastro</h3>
-                <input type="text" placeholder="nome" id="nomeCadastrarLivro">
-                <input type="text" placeholder="autor" id="autorCadastrarLivro">
-                <input type="date" placeholder="data" id="dataCadastrarLivro">
-                <button onclick="cadastrarLivro()">Cadastrar livro</button>
+                <br>
+                <br>
+                <input type="text" placeholder="Nome" id="nomeCadastrarLivro">
+                <input type="text" placeholder="Autor" id="autorCadastrarLivro">
+                <input type="date" placeholder="Data" id="dataCadastrarLivro">
+                <button onclick="cadastrarLivro()">Cadastrar Livro</button>
             </div>
             <div class="card">
                 <h3>Editar</h3>
-                <input type="number" placeholder="id" id="idEditarLivro">
-                <input type="text" placeholder="nome" id="nomeEditarLivro">
-                <input type="text" placeholder="autor" id="autorEditarLivro">
-                <input type="date" placeholder="data" id="dataEditarLivro">
+                <br>
+                <input type="number" placeholder="ID" id="idEditarLivro">
+                <input type="text" placeholder="Nome" id="nomeEditarLivro">
+                <input type="text" placeholder="Autor" id="autorEditarLivro">
+                <input type="date" placeholder="Data" id="dataEditarLivro">
                 <button onclick="editarLivro()">Editar livro</button>
             </div>
             <div class="card">
                 <h3>Deletar</h3>
-                <input type="number" min="1" placeholder="idDeletarLivro" id="idDeletarLivro">
-                <button onclick="deletarLivro()">Deletar por id</button>
+                <br>
+                <br>
+                <br>
+                <input type="number" min="1" placeholder="ID" id="idDeletarLivro">
+                <button onclick="deletarLivro()">Deletar</button>
             </div>
         </div>
 
@@ -45,9 +51,9 @@
 
         <div class="filtroBusca">
             <input type="number" min="1" placeholder="ID" id="idBuscarLivro" class="idBuscar">
-            <button onclick="buscarLivroId()" class="buttonBuscar">Buscar Por ID</button>
+            <button onclick="buscarLivroId()" class="buttonBuscar">Buscar por ID</button>
             <input type="text" placeholder="Nome" id="nomeBuscarLivro" class="nomeBuscar">
-            <button onclick="buscarLivroNome()" class="buttonBuscar">Buscar Por Nome</button>
+            <button onclick="buscarLivroNome()" class="buttonBuscar">Buscar por Nome</button>
         </div>
 
         <div id="tabelaLivros"></div>

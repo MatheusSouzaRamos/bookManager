@@ -29,7 +29,7 @@ async function buscarLivrosDisponiveis(){
                         <select id="cliente-livro-${el.id}">${clientes}</select>
                     </td>
                     <td>
-                        <button onclick="emprestarLivro(${el.id})">Emprestar</button>
+                        <button onclick="emprestarLivro(${el.id})" style = "padding: 2px;">Emprestar</button>
                     </td>
                 </tr>
             `
@@ -87,7 +87,7 @@ function buscarLivrosEmprestados(){
                     <td>${el.cliente.id}</td>
                     <td>${el.cliente.nome}</td>
                     <td>${el.cliente.telefone}</td>
-                    <td><button onclick="devolverLivro(${el.id})">Devolver</button></td>
+                    <td><button onclick="devolverLivro(${el.id})" style = "padding: 2px;">Devolver</button></td>
                 </tr>
             `
         }
